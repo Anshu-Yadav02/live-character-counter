@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Character Counter</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      width: 500px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #ff4b2b;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 2px solid #ff6a88;
+      outline: none;
+      transition: all 0.3s ease;
+      resize: none;
+    }
+
+    textarea:focus {
+      border-color: #ff4b2b;
+      box-shadow: 0px 0px 10px rgba(255, 75, 43, 0.5);
+    }
+
+    .counter {
+      margin-top: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 50px;
+      display: inline-block;
+      background-color: #f5f5f5;
+      transition: background-color 0.3s, color 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🌈 Live Character Counter</h2>
+    <textarea id="textArea" placeholder="Type something colorful..."></textarea>
+    <div class="counter" id="counter">Characters: 0</div>
+  </div>
+
+  <script>
+    const textArea = document.getElementById('textArea');
+    const counter = document.getElementById('counter');
+
+    textArea.addEventListener('input', () => {
+      let length = textArea.value.length;
+      counter.textContent = `Characters: ${length}`;
+
+      // Color change effect
+      if (length < 50) {
+        counter.style.backgroundColor = "#a1ffce";
+        counter.style.color = "#006400";
+      } else if (length < 100) {
+        counter.style.backgroundColor = "#fff3a0";
+        counter.style.color = "#8B8000";
+      } else {
+        counter.style.backgroundColor = "#ffb3b3";
+        counter.style.color = "#8B0000";
+      }
+    });
+  </script>
+
+</body>
+</html>
